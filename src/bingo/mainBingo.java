@@ -24,14 +24,17 @@ public class mainBingo {
         
         System.out.println("Bingo creado. Iniciando juego...");
         int cartillaGanadora = bingo.jugar();
+        bingo.sortearNumero(numeroMaximo);
+        bingo.sortearUnNumero();
         
-        if (cartillaGanadora != -1) {
+       /* if (cartillaGanadora != -1) {
             System.out.println("La cartilla ganadora es la #" + cartillaGanadora);
             System.out.println(bingo.imprimirCartilla(cartillaGanadora));
         } else {
             System.out.println("El juego terminó sin ganadores.");
-        }
+        }*/
         System.out.println(cartillaGanadora);
+        System.out.println(bingo.sortearUnNumero());
         
     }
        

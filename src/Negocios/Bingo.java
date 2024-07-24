@@ -12,7 +12,7 @@ import java.util.BitSet;
  * @author brand
  */
 public class Bingo {
-    int CantidadCartillas;
+   int CantidadCartillas;
     Cartilla[] cartillas;
     public BitSet cartillasCreadas;
     public Random random;
@@ -49,6 +49,10 @@ public class Bingo {
         long endTime = System.currentTimeMillis();
         System.out.println("Tiempo total: " + (endTime - startTime) / 1000.0 + " segundos");
 
+    }
+    public int CantDeCartillas()
+    {
+        return CantidadCartillas;
     }
     public int jugar() {
         int numeroSorteado;

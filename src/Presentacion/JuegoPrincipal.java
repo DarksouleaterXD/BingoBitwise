@@ -6,6 +6,7 @@ package Presentacion;
 
 import Negocios.Bingo;
 import Negocios.Cartilla;
+import static java.lang.String.valueOf;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -36,7 +37,7 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        MostrarCartilla = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Cartillas = new javax.swing.JTable();
         NumeroDeCartillaOrdinal = new javax.swing.JTextField();
@@ -45,18 +46,20 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         RangoDeNumeros = new javax.swing.JTextField();
         CantidadDeNumerosEnCartilla = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        CrearBINGO = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         CantidadDeCartillas = new javax.swing.JTextField();
-        textArea1 = new java.awt.TextArea();
+        NumeroSorteado = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        BtnSortear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Mostrar Cartilla");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        MostrarCartilla.setText("Mostrar Cartilla");
+        MostrarCartilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                MostrarCartillaActionPerformed(evt);
             }
         });
 
@@ -92,14 +95,27 @@ public class JuegoPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("NumeroDeCartilla");
 
-        jButton2.setText("CrearBingo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        CrearBINGO.setText("CrearBingo");
+        CrearBINGO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                CrearBINGOActionPerformed(evt);
             }
         });
 
         jLabel5.setText("CantidadDeCartillas");
+
+        NumeroSorteado.setBackground(new java.awt.Color(255, 0, 0));
+        NumeroSorteado.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        NumeroSorteado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 10, true));
+
+        jLabel6.setText("Bolilla Nº");
+
+        BtnSortear.setText("SortearNumero");
+        BtnSortear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSortearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,32 +130,35 @@ public class JuegoPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(RangoDeNumeros, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
                     .addComponent(CantidadDeNumerosEnCartilla))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 399, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(211, 211, 211))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(NumeroDeCartillaOrdinal, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(NumeroDeCartillaOrdinal, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CantidadDeCartillas, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(NumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CantidadDeCartillas, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(97, 97, 97)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(MostrarCartilla)
+                    .addComponent(CrearBINGO))
                 .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 394, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(75, 75, 75)
+                .addComponent(BtnSortear)
+                .addGap(151, 151, 151))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,84 +179,85 @@ public class JuegoPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addComponent(RangoDeNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
+                            .addComponent(MostrarCartilla)
                             .addComponent(NumeroDeCartillaOrdinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
+                        .addComponent(CrearBINGO)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnSortear)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(NumeroSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    //  public Bingo(int cantidadCartillas, int numMax){
-    //public void CrearBingo(int numMax, int CantidadNumeros) {*/
-      //int cantCartillas=Integer.parseInt(CantidadDeCartillas.getText());
-      int RangoMaximo= Integer.parseInt(RangoDeNumeros.getText());
-      int NumeroCartillaOrdinal= Integer.parseInt(NumeroDeCartillaOrdinal.getText());
-      int CantidadDeNumeros=Integer.parseInt(CantidadDeNumerosEnCartilla.getText());
-        //System.out.println(cantCartillas);
-        System.out.println(RangoMaximo);
-        System.out.println(NumeroCartillaOrdinal);
-      System.out.println(CantidadDeNumeros);
-      
-      
-      
-       Cartilla cartilla= new Cartilla(RangoMaximo,NumeroCartillaOrdinal);
-        cartilla.CrearCartilla(CantidadDeNumeros, new Random());
-        cartilla.desordenarCartilla(new Random());
-        System.out.println(cartilla.imprimirCartillaDesordenada());
-
-        DefaultTableModel tableModel = (DefaultTableModel) Cartillas.getModel();
-        tableModel.setRowCount(0); // Limpiar las filas existentes
-
-        try {
-            String cartillaString = cartilla.imprimirCartillaDesordenada();
-            int InicialIndex = cartillaString.indexOf("[N=") + 3;
-            int FinalIndex = cartillaString.indexOf("]");
-            if (InicialIndex >= 3 && FinalIndex > InicialIndex) {
-                String NumeroString = cartillaString.substring(InicialIndex, FinalIndex);
-                String[] NumerosArray = NumeroString.split(",");
-
-                for (int i = 0; i < NumerosArray.length; i += NumeroDeColumnas) {
-                    String[] row = new String[NumeroDeColumnas];
-                    for (int j = 0; j < NumeroDeColumnas; j++) {
-                        if (i + j < NumerosArray.length) {
-                            row[j] = NumerosArray[i + j];
-                        } else {
-                            row[j] = ""; // Dejar vacío si no hay más números
-                        }
-                    }
-                    tableModel.addRow(row);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "La cadena de cartilla no tiene el formato esperado.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Ocurrió un error al procesar la cadena de cartilla: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int cantCartillas=Integer.parseInt(CantidadDeCartillas.getText());
-      int RangoMaximo= Integer.parseInt(RangoDeNumeros.getText());
-     // int NumeroCartillaOrdinal= Integer.parseInt(NumeroDeCartillaOrdinal.getText());
-      int CantidadDeNumeros=Integer.parseInt(CantidadDeNumerosEnCartilla.getText());
-      //public void CrearBingo(int numMax, int CantidadNumeros) 
-      //public Bingo(int cantidadCartillas, int numMax){
-        B=new Bingo(RangoMaximo,CantidadDeNumeros);
-        B.CrearBingo(cantCartillas,RangoMaximo);
+    private void MostrarCartillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarCartillaActionPerformed
+    
+        int numeroCartilla = Integer.parseInt(NumeroDeCartillaOrdinal.getText());
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    String cartillaString = B.imprimirCartilla(numeroCartilla);
+    System.out.println(cartillaString);
+
+    DefaultTableModel tableModel = (DefaultTableModel) Cartillas.getModel();
+    tableModel.setRowCount(0); // Limpiar las filas existentes
+
+    try {
+        int InicialIndex = cartillaString.indexOf("[N=") + 3;
+        int FinalIndex = cartillaString.indexOf("]");
+        if (InicialIndex >= 3 && FinalIndex > InicialIndex) {
+            String NumeroString = cartillaString.substring(InicialIndex, FinalIndex);
+            String[] NumerosArray = NumeroString.split(",");
+
+            for (int i = 0; i < NumerosArray.length; i += NumeroDeColumnas) {
+                String[] row = new String[NumeroDeColumnas];
+                for (int j = 0; j < NumeroDeColumnas; j++) {
+                    if (i + j < NumerosArray.length) {
+                        row[j] = NumerosArray[i + j];
+                    } else {
+                        row[j] = ""; // Dejar vacío si no hay más números
+                    }
+                }
+                tableModel.addRow(row);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "La cadena de cartilla no tiene el formato esperado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Ocurrió un error al procesar la cadena de cartilla: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_MostrarCartillaActionPerformed
+
+    private void CrearBINGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearBINGOActionPerformed
+        int cantCartillas=Integer.parseInt(CantidadDeCartillas.getText());
+         int RangoMaximo= Integer.parseInt(RangoDeNumeros.getText());
+        int CantidadDeNumeros=Integer.parseInt(CantidadDeNumerosEnCartilla.getText());
+        B=new Bingo(cantCartillas,RangoMaximo);
+        B.CrearBingo(RangoMaximo,CantidadDeNumeros);
+       
+        
+    }//GEN-LAST:event_CrearBINGOActionPerformed
+
+    private void BtnSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSortearActionPerformed
+        int RangoMaximo= Integer.parseInt(RangoDeNumeros.getText());
+       // B.sortearNumero(RangoMaximo);
+        //B.sortearUnNumero();
+        //int NumeroSorteado = B.sortearNumero(RangoMaximo);
+        String NumeroSorteado2= String.valueOf(B.sortearNumero(RangoMaximo));
+        
+        NumeroSorteado.setText(NumeroSorteado2);
+        System.out.println(NumeroSorteado2);
+    }//GEN-LAST:event_BtnSortearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,19 +295,21 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnSortear;
     private javax.swing.JTextField CantidadDeCartillas;
     private javax.swing.JTextField CantidadDeNumerosEnCartilla;
     private javax.swing.JTable Cartillas;
+    private javax.swing.JButton CrearBINGO;
+    private javax.swing.JButton MostrarCartilla;
     private javax.swing.JTextField NumeroDeCartillaOrdinal;
+    private javax.swing.JTextField NumeroSorteado;
     private javax.swing.JTextField RangoDeNumeros;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private java.awt.TextArea textArea1;
     // End of variables declaration//GEN-END:variables
 }
